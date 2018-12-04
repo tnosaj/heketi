@@ -105,7 +105,7 @@ func (a *App) NodeAdd(w http.ResponseWriter, r *http.Request) {
 		err := a.executor.GlusterdCheck(node.ManageHostName())
 		if err != nil {
 			logger.Err(err)
-			err := logger.LogError("New Node doesn't have glusterd running")
+			err := logger.LogError("New Node doesn't have glusterd running" + err.Error())
 			http.Error(w, err.Error(), http.StatusBadRequest)
 			return
 		}
